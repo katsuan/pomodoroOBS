@@ -6,7 +6,7 @@ function getParameters() {
     const startHourString = params.get("start") || "9";
     const stateString = params.get("state") || "1";
     const counterString = params.get("counter") || "1";
-    const volumeString = params.get("vol") || "1";
+    const volumeString = params.get("vol") || "0";
     const outsideString = params.get("outside") || "1";
     return {
         break: parseInt(breakString, 10),
@@ -72,14 +72,13 @@ function switchScene(parameters) {
     const interval = parameters.work + parameters.break;
     const minutesInInterval = minutes % interval;
     if (seconds === 0) {
+        const volumeSlider = document.getElementById("volume-slider").value;
         if (minutesInInterval === 0) {
             switchToWorkScene();
             playSound("sound/学校のチャイム.mp3", volumeSlider);
-            console.log("開始時間");
         } else if (minutesInInterval === parameters.work) {
             switchToBreakScene();
             playSound("sound/「そこまで」.mp3", volumeSlider);
-            console.log("終了時間");
         }
     }
     function playSound(source, volume) {
@@ -112,6 +111,18 @@ function displayState(parameters) {
     }
 }
 
+function hideRange(rangeList) {
+    // 要素の非表示設定
+    rangeList.forEach(rangeId => {
+        const rangeElement = document.getElementById(rangeId);
+        rangeElement.style.display = "none";
+    });
+}
+
+if (parameters.displayVolume === 0) {
+    const range = ["volume"]
+    hideRange(range);
+}
 
 setInterval(function () {
     const parameters = getParameters();
@@ -120,4 +131,5 @@ setInterval(function () {
     element.className = calculateClassName(parameters);
     switchScene(parameters);
     displayState(parameters);
+    displayVolume(parameters);
 }, 1000);
