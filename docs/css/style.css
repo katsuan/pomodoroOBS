@@ -1,0 +1,134 @@
+/* 全体のスタイル */
+:root {
+    --color-base: #4d4d4d;
+    --color-primary: #F9BE00;
+    --color-second: #DF7861;
+    --color-accent: #e9eaec;
+}
+
+p {
+    font-size: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--color-base);
+}
+
+html {
+    font-size: 32vmin;
+}
+
+body {
+    align-items: center;
+    color: var(--color-base);
+    display: flex;
+    font-family: 'Helvetica Neue', sans-serif;
+    justify-content: center;
+    margin: 0px auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* タイマーのスタイル */
+.timer {
+    height: 3rem;
+    position: relative;
+    width: 3rem;
+}
+
+.timer-label {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 3rem;
+}
+
+#time-label {
+    color: var(--color-second);
+    font-size: 0.25rem;
+}
+
+#state {
+    font-size: 0.25rem;
+}
+
+#status {
+    font-size: 0.2rem;
+}
+
+#timer-label {
+    font-size: 0.8rem;
+    letter-spacing: -1vw;
+    line-height: 0.7;
+}
+
+#counter {
+    color: var(--color-second);
+    font-size: 0.25rem;
+    margin-bottom: 0.1rem;
+}
+
+.break {
+    color: var(--color-base);
+}
+
+.work {
+    color: var(--color-primary);
+    -webkit-text-stroke: 0.02rem var(--color-base);
+}
+
+/* タイマーの外枠スタイル */
+.timer-group {
+    fill: none;
+    stroke: none;
+}
+
+.timer-circle-accent {
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke: var(--color-accent);
+}
+
+.timer-circle-base {
+    stroke-linecap: round;
+    stroke-width: 5;
+    stroke: var(--color-base);
+}
+
+.timer-label {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 3rem;
+}
+
+.timer-circle-inner {
+    stroke: var(--color-primary);
+    stroke-linecap: round;
+    stroke-width: 3;
+    transition: 0.5s linear all;
+    opacity: 0.9;
+}
+
+.timer-svg {
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+/* オーディオ調整バーのスタイル */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* 🚩これ無しだとスタイルがほぼ全く反映されないので注意 */
+    appearance: none;
+    accent-color: var(--color-second);
+    cursor: pointer;
+    outline: none;
+    height: 14px;
+    border-radius: 10px;
+    border: solid 3px var(--color-accent);
+}

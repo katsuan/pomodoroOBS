@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>pomodoro</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Lalezar&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+<body id="body">
+  <div id="content" class="timer">
+    <svg id="outside" class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g class="timer-group">
+        <circle cx="50" cy="50" r="47" class="timer-circle-background" />
+        <circle cx="50" cy="50" r="40" class="timer-circle-accent" />
+        <circle cx="50" cy="50" r="40" class="timer-circle-base" id="timer-circle-base" stroke-dasharray="252" />
+        <circle cx="50" cy="50" r="40" class="timer-circle-inner" id="timer-circle-inner" stroke-dasharray="283" />
+      </g>
+    </svg>
+    <div id="timer" class="timer-label">
+      <div>
+        <div id="time-label">Time</div>
+        <div id="state"></div>
+        <div id="timer-label">00:00</div>
+        <div id="status">FocusTime</div>
+        <div id="counter">pomodoro #00</div>
+        <div id="volume">
+          <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0">
+          <p>Volume</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
