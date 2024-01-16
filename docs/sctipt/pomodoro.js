@@ -131,5 +131,4 @@ setInterval(function () {
     element.className = calculateClassName(parameters);
     switchScene(parameters);
     displayState(parameters);
-    displayVolume(parameters);
 }, 1000);
