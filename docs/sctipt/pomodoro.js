@@ -64,6 +64,10 @@ function calculateTimerText(parameters) {
     ].join(":");
 }
 
+function displayParameters(parameters) {
+    return `work ${parameters.work} | break ${parameters.break}`;
+}
+
 function switchScene(parameters) {
     // Work と Break の切替
     const date = new Date();
@@ -73,6 +77,7 @@ function switchScene(parameters) {
     const minutesInInterval = minutes % interval;
     if (seconds === 0) {
         const volumeSlider = document.getElementById("volume-slider").value;
+        console.log(volumeSlider);
         if (minutesInInterval === 0) {
             switchToWorkScene();
             playSound("sound/学校のチャイム.mp3", volumeSlider);
@@ -129,6 +134,8 @@ setInterval(function () {
     const element = document.getElementById("timer")
     element.textContent = calculateTimerText(parameters);
     element.className = calculateClassName(parameters);
+    const status = document.getElementById("status");
+    status.textContent = displayParameters(parameters);
     switchScene(parameters);
     displayState(parameters);
     displayVolume(parameters);
