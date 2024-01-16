@@ -2,119 +2,12 @@
   <head>
     <meta charset="utf-8" />
     <title>pomodoro</title>
-    <!-- <style>
-      body {
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0);
-        color: #fff;
-        display: flex;
-        font-family: "Monaco", "Consolas", monospace;
-        font-size: 32vw;
-        font-weight: bold;
-        justify-content: center;
-        margin: 0px auto;
-        overflow: hidden;
-        -webkit-text-stroke: 0.4vw #000;
-      }
-
-      .break {
-        color: #FFB6C1;
-      }
-
-      .work {
-        color: #98FB98;
-      }
-    </style> -->
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
+  <body style="background-color: #cabebe">
     <div id="state"></div>
     <div id="timer"></div>
-    <script type="text/javascript">
-      function zeroPadding(number, length) {
-        return number.toString().padStart(length, "0");
-      }
-
-      function calculateClassName(parameters) {
-        const date = new Date();
-        const minutes = date.getMinutes();
-        const interval = parameters.work + parameters.break;
-        const minutesInInterval = minutes % interval;
-        return minutesInInterval < parameters.work ? "work" : "break";
-      }
-
-      function calculateTimerText(parameters) {
-        const date = new Date();
-        const minutes = date.getMinutes();
-        const seconds = date.getSeconds();
-        const remainingSeconds = 59 - seconds;
-        const interval = parameters.work + parameters.break;
-        const minutesInInterval = minutes % interval;
-        const remainingMinutes =
-          (minutes < parameters.work ? parameters.work : interval) -
-          minutesInInterval -
-          1;
-        return [
-          zeroPadding(remainingMinutes, 2),
-          zeroPadding(remainingSeconds, 2),
-        ].join(":");
-      }
-
-      function switchScene(parameters) {
-        const date = new Date();
-        const minutes = date.getMinutes();
-        const seconds = date.getSeconds();
-        const interval = parameters.work + parameters.break;
-        const minutesInInterval = minutes % interval;
-        if (seconds === 0) {
-          if (minutesInInterval === 0) {
-            switchToWorkScene();
-          } else if (minutesInInterval === parameters.work) {
-            switchToBreakScene();
-          }
-        }
-      }
-
-      function switchToBreakScene() {
-        if (window.obsstudio) {
-          window.obsstudio.setCurrentScene("Break");
-        }
-      }
-
-      function switchToWorkScene() {
-        if (window.obsstudio) {
-          window.obsstudio.setCurrentScene("Work");
-        }
-      }
-
-      function displayState(parameters) {
-        if (parameters.displayState) {
-            document.getElementById("state").textContent = document.getElementById("timer").className;
-            document.body.style.fontSize = "16vw";
-            document.body.style.flexDirection = 'column';
-        }
-      }
-
-      function getParameters() {
-        const params = new URL(window.location.href).searchParams;
-        const breakString = params.get("break") || "10";
-        const workString = params.get("work") || "50";
-        const displayStateString = params.get("displayState") || "0";
-        return {
-          break: parseInt(breakString, 10),
-          work: parseInt(workString, 10),
-          displayState: parseInt(displayStateString, 10)
-        };
-      }
-
-      setInterval(function () {
-        const parameters = getParameters();
-        const element = document.getElementById("timer")
-        element.textContent = calculateTimerText(parameters);
-        element.className = calculateClassName(parameters);
-        switchScene(parameters);
-        displayState(parameters);
-      }, 1000);
+    <script src="sctipt/pomodoro.js" type="text/javascript">
     </script>
   </body>
 </html>
